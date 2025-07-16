@@ -12,6 +12,54 @@ export const CRYPTOS = [
     symbol: "ETH",
     name: "Ethereum",
     logo: "https://assets.coingecko.com/coins/images/279/large/ethereum.png"
+  },
+  {
+    id: "solana",
+    symbol: "SOL",
+    name: "Solana",
+    logo: "https://assets.coingecko.com/coins/images/4128/large/solana.png"
+  },
+  {
+    id: "cardano",
+    symbol: "ADA",
+    name: "Cardano",
+    logo: "https://assets.coingecko.com/coins/images/975/large/cardano.png"
+  },
+  {
+    id: "polkadot",
+    symbol: "DOT",
+    name: "Polkadot",
+    logo: "https://assets.coingecko.com/coins/images/12171/large/polkadot.png"
+  },
+  {
+    id: "dogecoin",
+    symbol: "DOGE",
+    name: "Dogecoin",
+    logo: "https://assets.coingecko.com/coins/images/5/large/dogecoin.png"
+  },
+  {
+    id: "avalanche-2",
+    symbol: "AVAX",
+    name: "Avalanche",
+    logo: "https://assets.coingecko.com/coins/images/12559/standard/Avalanche_Circle_RedWhite_Trans.png"
+  },
+  {
+    id: "litecoin",
+    symbol: "LTC",
+    name: "Litecoin",
+    logo: "https://assets.coingecko.com/coins/images/2/large/litecoin.png"
+  },
+  {
+    id: "bitcoin-cash",
+    symbol: "BCH",
+    name: "Bitcoin Cash",
+    logo: "https://assets.coingecko.com/coins/images/780/large/bitcoin-cash-circle.png"
+  },
+  {
+    id: "stellar",
+    symbol: "XLM",
+    name: "Stellar",
+    logo: "https://assets.coingecko.com/coins/images/100/large/Stellar_symbol_black_RGB.png"
   }
 ];
 

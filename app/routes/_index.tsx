@@ -2,6 +2,7 @@ import type { MetaFunction } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import { getCryptoData } from "~/services/crypto.server";
 import { CryptoInfo } from "~/types";
+import { CryptoGrid } from "~/components"
 
 export const meta: MetaFunction = () => {
   return [
@@ -21,14 +22,7 @@ export default function Index() {
   return (
     <main className="p-6 max-w-6xl mx-auto pt-20">
       <div className="space-y-6">
-        
-        
-
-        {cryptos.map((crypto) => (
-          crypto.symbol + " - "
-        ))}
-
-
+        <CryptoGrid cryptos={cryptos} />
       </div>
     </main>
   );
