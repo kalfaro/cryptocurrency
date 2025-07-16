@@ -14,7 +14,7 @@ A modern web app built with **Remix**, **React**, **TailwindCSS**, and **DnD Kit
 
 ```bash
 git clone git@github.com:kalfaro/cryptocurrency.git
-cd crypto-dashboard
+cd cryptocurrency
 ```
 
 2. **Build and start containers:**
@@ -45,7 +45,7 @@ docker compose exec -it cryptocurrency bash
 
 ```bash
 git clone git@github.com:kalfaro/cryptocurrency.git
-cd crypto-dashboard
+cd cryptocurrency
 ```
 
 2. **Install dependencies:**
