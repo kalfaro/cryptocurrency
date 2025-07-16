@@ -1,11 +1,6 @@
-import {
-  Links,
-  Meta,
-  Outlet,
-  Scripts,
-  ScrollRestoration,
-} from "@remix-run/react";
+import { Links, Meta, Outlet, Scripts, ScrollRestoration } from "@remix-run/react";
 import type { LinksFunction } from "@remix-run/node";
+import { Navbar, Footer } from "./components";
 
 import "./tailwind.css";
 
@@ -24,15 +19,19 @@ export const links: LinksFunction = () => [
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" className="h-full">
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
         <Links />
       </head>
-      <body>
-        {children}
+      <body className="h-full flex flex-col bg-gray-100 text-black dark:bg-gray-950 dark:text-white transition-colors duration-300">
+        <Navbar />
+        <main className="flex-1">
+          {children}
+        </main>
+        <Footer />
         <ScrollRestoration />
         <Scripts />
       </body>
