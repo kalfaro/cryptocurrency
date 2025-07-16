@@ -1,40 +1,134 @@
-# Welcome to Remix!
+# Crypto Dashboard
 
-- 📖 [Remix docs](https://remix.run/docs)
+A modern web app built with **Remix**, **React**, **TailwindCSS**, and **DnD Kit** that allows users to view, filter, and reorder a list of cryptocurrencies with real-time exchange rates from the **Coinbase API**.
 
-## Development
+---
 
-Run the dev server:
+## 🚀 Setup Instructions
 
-```sh
+### 🐳 Option 1: Docker + Docker Compose (Recommended)
+
+> Requires [Docker](https://www.docker.com/) and [Docker Compose](https://docs.docker.com/compose/)
+
+1. **Clone the repository:**
+
+```bash
+git clone git@github.com:kalfaro/cryptocurrency.git
+cd crypto-dashboard
+```
+
+2. **Build and start containers:**
+
+```bash
+docker-compose up --build
+```
+
+3. **Access the app:**
+
+```bash
+http://localhost:5173
+```
+
+4. **Access the container shell (if needed):**
+
+```bash
+docker compose exec -it cryptocurrency bash
+```
+
+---
+
+### 🛠️ Option 2: Local Development
+
+> Requires [Node.js](https://nodejs.org/) >= v18 and [npm](https://www.npmjs.com/)
+
+1. **Clone the repository:**
+
+```bash
+git clone git@github.com:kalfaro/cryptocurrency.git
+cd crypto-dashboard
+```
+
+2. **Install dependencies:**
+
+```bash
+npm install
+```
+
+3. **Start the development server:**
+
+```bash
 npm run dev
 ```
 
-## Deployment
+> Open in browser: http://localhost:5173
 
-First, build your app for production:
+---
 
-```sh
-npm run build
+## 🧪 Features
+
+- Real-time data from Coinbase API.
+- Display at least 10 cryptocurrencies with:
+  - Name and symbol
+  - Exchange rate to USD
+  - Exchange rate to BTC
+  - Logo
+- Filter by name or symbol.
+- Drag and drop cards to reorder.
+- Persist order in `localStorage`.
+- Dark/Light mode toggle.
+- Loading and error states.
+- Responsive design.
+
+---
+
+## ⚙️ Tech Stack
+
+- [Remix v2](https://remix.run)
+- React 18
+- TailwindCSS
+- DnD Kit
+- Coinbase Public API
+- Docker & Docker Compose
+
+---
+
+## 📁 Project Structure
+
+```
+app/
+├── components/
+│   ├── CryptoCard.tsx
+│   ├── CryptoGrid.tsx
+│   ├── Footer.tsx
+│   ├── index.ts
+│   ├── Navbar.tsx
+│   ├── RefreshButton.tsx
+│   ├── SearchInput.tsx
+│   ├── SortableCryptoGridtsx
+│   └── ThemeToggle.tsx
+├── routes/
+│   └── _index.tsx
+├── services/
+│   └── crypto.service.ts
+├── types/
+│   └── crypto.ts
+│   └── index.ts
+├── utils/
+│   └── useDebouncedValue.ts
 ```
 
-Then run the app in production mode:
+---
 
-```sh
-npm start
-```
+## 📝 Notes on Decisions and Tradeoffs
 
-Now you'll need to pick a host to deploy it to.
+- Coinbase API lacks logo/image support, so static fallback URLs from CoinGecko were used.
+- DnD Kit was selected for its ease of integration with React and drag handle support.
+- Dark mode is implemented using Tailwind’s `dark` class strategy.
+- Error handling uses `ErrorBoundary` with a normalization helper.
+- `localStorage` is used for sorting persistence only on client side.
 
-### DIY
+---
 
-If you're familiar with deploying Node applications, the built-in Remix app server is production-ready.
+## 📄 License
 
-Make sure to deploy the output of `npm run build`
-
-- `build/server`
-- `build/client`
-
-## Styling
-
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever css framework you prefer. See the [Vite docs on css](https://vitejs.dev/guide/features.html#css) for more information.
+MIT © 2025 Kenneth Alfaro
