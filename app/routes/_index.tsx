@@ -2,9 +2,7 @@ import type { MetaFunction } from "@remix-run/node";
 import { isRouteErrorResponse, useFetcher, useLoaderData, useRouteError } from "@remix-run/react";
 import { getCryptoData } from "~/services/crypto.server";
 import { CryptoInfo } from "~/types";
-import { SearchInput, SortableCryptoGrid, RefreshButton } from "~/components";
-import { useEffect, useMemo, useState } from "react";
-import { useDebouncedValue } from "~/utils/useDebouncedValue";
+import { CryptoDashboard } from "~/components";
 
 export const meta: MetaFunction = () => {
   return [
@@ -24,41 +22,9 @@ export const loader = async () => {
 };
 
 export default function Index() {
-  const { cryptos: InitialCryptos } = useLoaderData<typeof loader>();
-  const [cryptos, setCryptos] = useState(InitialCryptos);
-  const [search, setSearch] = useState("");
-  // For Refresh button
+  const { cryptos } = useLoaderData<typeof loader>();
   const fetcher = useFetcher<typeof loader>();
-  // Here it updates only after 300ms without changes
-  const debouncedSearch = useDebouncedValue(search, 300);
-
-  useEffect(() => {
-    if (fetcher.data?.cryptos) {
-      setCryptos(fetcher.data.cryptos);
-    }
-  }, [fetcher.data]);
-
-  const filtered = useMemo(() => {
-    return cryptos.filter((crypto) =>
-      `${crypto.name} ${crypto.symbol}`.toLocaleLowerCase().includes(debouncedSearch.toLocaleLowerCase())
-    )
-  }, [debouncedSearch, cryptos])
-
-  return (
-    <main className="p-6 max-w-6xl mx-auto pt-20">
-      <div className="space-y-6">
-        <div className="flex items-center gap-4 mb-4">
-          <SearchInput value={search} onChange={setSearch} />
-          <RefreshButton fetcher={fetcher} />
-        </div>
-        {filtered.length == 0 ? (
-          <p className="text-center text-gray-500 mt-8">No results found.</p>
-        ): (
-          <SortableCryptoGrid cryptos={filtered} />
-        )}
-      </div>
-    </main>
-  );
+  return <CryptoDashboard initialCryptos={cryptos} fetcher={fetcher} />;
 }
 
 export function ErrorBoundary() {
@@ -81,17 +47,26 @@ export function ErrorBoundary() {
   );
 }
 
-export function normalizeError(error: unknown): { status: number; message: string; } {
+export function normalizeError(error: unknown): { status: number; message: string } {
   if (isRouteErrorResponse(error)) {
     return {
       status: error.status,
       message: typeof error.data === 'string'
         ? error.data
-        : error.statusText || 'Unexpected response error'
+        : error.statusText || 'Unexpected response error',
     };
   }
 
   if (error instanceof Error) {
+    // Try to parse the message with format "message;status;statusText"
+    const parts = error.message.split(";");
+    if (parts.length === 3 && !isNaN(Number(parts[1]))) {
+      return {
+        status: Number(parts[1]),
+        message: parts[0] + " - " + parts[2],
+      };
+    }
+
     return { status: 500, message: error.message || 'Unknown error' };
   }
 

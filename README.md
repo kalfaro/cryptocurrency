@@ -64,6 +64,33 @@ npm run dev
 
 ---
 
+## ✅ Testing
+
+This application uses **Vitest** and **Testing Library** for unit and component testing.
+
+### Run tests once
+
+```bash
+npm run test
+```
+
+### Run tests in watch mode
+
+```bash
+npm run test:watch
+```
+
+---
+
+## 🧪 Current Test Coverage
+
+- [x] Components: CryptoCard, Footer, Navbar, RefreshButton, SearchInput, SortableCryptoGrid, ThemeToggle
+- [x] Custom Hooks (`useDebouncedValue`)
+- [x] Services (`getCryptoData`)
+- [x] Main Page (`routes/_index.tsx`) – Partially tested via `CryptoDashboard`
+
+---
+
 ## 🧪 Features
 
 - Real-time data from Coinbase API.
@@ -97,24 +124,43 @@ npm run dev
 ```
 app/
 ├── components/
-│   ├── CryptoCard.tsx
-│   ├── CryptoGrid.tsx
-│   ├── Footer.tsx
+│   ├── CryptoCard/
+│       ├── CryptoCard.tsx
+│       ├── CryptoCard.test.tsx
+│   ├── Footer/
+│       ├── Footer.tsx
+│       ├── Footer.test.tsx
 │   ├── index.ts
-│   ├── Navbar.tsx
-│   ├── RefreshButton.tsx
-│   ├── SearchInput.tsx
-│   ├── SortableCryptoGridtsx
-│   └── ThemeToggle.tsx
+│   ├── Navbar/
+│       ├── Navbar.tsx
+│       ├── Navbar.test.tsx
+│   ├── CryptoDashboard/
+│       ├── CryptoDashboard.tsx
+│       ├── CryptoDashboard.test.tsx
+│   ├── RefreshButton/
+│       ├── RefreshButton.tsx
+│       ├── RefreshButton.test.tsx
+│   ├── SearchInput/
+│       ├── SearchInput.tsx
+│       ├── SearchInput.test.tsx
+│   ├── SortableCryptoGrid/
+│       ├── SortableCryptoGrid.tsx
+│       ├── SortableCryptoGrid.test.tsx
+│   └── ThemeToggle/
+│       └── ThemeToggle.tsx
+│       └── ThemeToggle.test.tsx
 ├── routes/
 │   └── _index.tsx
 ├── services/
 │   └── crypto.service.ts
+│   └── crypto.test.ts
 ├── types/
 │   └── crypto.ts
+│   └── crypto.test.ts
 │   └── index.ts
 ├── utils/
 │   └── useDebouncedValue.ts
+│   └── useDebouncedValue.test.ts
 ```
 
 ---

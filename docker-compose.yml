@@ -6,15 +6,8 @@ services:
       - "5173:5173"
     volumes:
       - .:/cryptocurrency
-      - node_modules:/cryptocurrency/node_modules
+      - /cryptocurrency/node_modules
     environment:
       - NODE_ENV=development
     stdin_open: true
     tty: true
-volumes:
-  node_modules:
-    driver: local
-    driver_opts:
-      type: 'none'
-      o: bind
-      device: '${PWD}/node_modules'

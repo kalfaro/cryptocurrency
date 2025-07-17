@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export function ThemeToggle() {
+export default function ThemeToggle() {
   const [dark, setDark] = useState(false);
 
   useEffect(() => {
@@ -19,6 +19,7 @@ export function ThemeToggle() {
 
   return (
     <button
+      aria-label="Toggle Theme"
       onClick={toggleTheme}
       className={`w-16 h-8 flex items-center rounded-full p-1 transition-colors duration-300
         ${dark ? "bg-gray-700" : "bg-gray-300"}`}

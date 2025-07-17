@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { DndContext, closestCenter, useSensor, useSensors, PointerSensor } from "@dnd-kit/core";
 import { SortableContext, arrayMove, useSortable, rectSortingStrategy } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
-import CryptoCard from "./CryptoCard";
+import CryptoCard from "../CryptoCard/CryptoCard";
 import type { CryptoInfo } from "~/types/crypto";
 
 function SortableItem({ crypto }: { crypto: CryptoInfo }) {

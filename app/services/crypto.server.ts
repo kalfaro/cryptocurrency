@@ -66,10 +66,7 @@ export const CRYPTOS = [
 export async function getCryptoData(): Promise<CryptoInfo[]> {
   const res = await fetch("https://api.coinbase.com/v2/exchange-rates?currency=BTC");
   if (!res.ok) {
-    throw new Response("Oops something fails with Coinbase API", {
-      status: res.status,
-      statusText: res.statusText
-    });
+    throw new Error(`Oops something fails with Coinbase API;${res.status};${res.statusText}`);
   }
   const json = await res.json();
   const rates = json.data.rates;
